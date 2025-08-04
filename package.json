@@ -2,22 +2,125 @@
   "name": "project-colorizer",
   "displayName": "Project Colorizer",
   "description": "Instantly distinguish your projects with a unique, randomly generated color for each workspace.",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publisher": "insv23",
+  "author": "insv23",
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/insv23/project-colorizer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/project-colorizer/issues"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/project-colorizer#readme",
+  "keywords": [
+    "colorize",
+    "workspace",
+    "theme",
+    "project",
+    "visual",
+    "organization",
+    "distinguish",
+    "random-color"
+  ],
   "engines": {
-    "vscode": "^1.102.0"
+    "vscode": "^1.74.0"
   },
   "categories": [
-    "Other"
+    "Themes"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "project-colorizer.helloWorld",
-        "title": "Hello World"
+        "command": "project-colorizer.regenerateColor",
+        "title": "Project Colorizer: Regenerate Color"
+      },
+      {
+        "command": "project-colorizer.showColor",
+        "title": "Project Colorizer: Show Current Color"
+      },
+      {
+        "command": "project-colorizer.setColor",
+        "title": "Project Colorizer: Set Custom Color"
+      },
+      {
+        "command": "project-colorizer.toggleColorization",
+        "title": "Project Colorizer: Toggle Colorization On/Off"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Project Colorizer",
+      "properties": {
+        "projectColorizer.workspaceColor": {
+          "type": "string",
+          "default": null,
+          "description": "The current workspace color",
+          "scope": "window"
+        },
+        "projectColorizer.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable colorization for this workspace",
+          "scope": "window"
+        },
+        "projectColorizer.enable.activityBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Colorize the Activity Bar (left sidebar with icons)"
+        },
+        "projectColorizer.enable.statusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Colorize the Status Bar (bottom bar)"
+        },
+        "projectColorizer.enable.titleBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Colorize the Title Bar (top window bar)"
+        },
+        "projectColorizer.enable.sideBar": {
+          "type": "boolean",
+          "default": false,
+          "description": "Colorize the Side Bar (file explorer, search, etc.)"
+        },
+        "projectColorizer.enable.panel": {
+          "type": "boolean",
+          "default": false,
+          "description": "Colorize the Panel (terminal, output, problems)"
+        },
+        "projectColorizer.enable.editorGroupHeader": {
+          "type": "boolean",
+          "default": false,
+          "description": "Colorize the Editor Group Headers (tab area)"
+        },
+        "projectColorizer.enable.menuBar": {
+          "type": "boolean",
+          "default": false,
+          "description": "Colorize the Menu Bar (File, Edit, View...)"
+        },
+        "projectColorizer.enable.minimap": {
+          "type": "boolean",
+          "default": false,
+          "description": "Colorize the Minimap border"
+        },
+        "projectColorizer.enable.breadcrumb": {
+          "type": "boolean",
+          "default": false,
+          "description": "Colorize the Breadcrumb navigation bar"
+        },
+        "projectColorizer.enable.notifications": {
+          "type": "boolean",
+          "default": false,
+          "description": "Colorize notification toasts"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
